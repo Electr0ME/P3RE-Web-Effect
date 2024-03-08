@@ -1,0 +1,49 @@
+#shape {
+  position: absolute;
+  left: 0;
+  bottom: -1vw;
+}
+.waves img:not(#shape) {
+  position: absolute;
+  left: 0;
+}
+.waves img:nth-child(1) {
+  opacity: 0.8;
+  bottom: -0.1vw;
+  animation: move-1 5s infinite;
+}
+@keyframes move-1 {
+  50% {
+    transform: translateY(35px);
+  }
+}
+.waves img:nth-child(2) {
+  opacity: 0.7;
+  bottom: 0.5vw;
+  animation: move-2 4s infinite;
+}
+@keyframes move-2 {
+  50% {
+    transform: translateY(25px);
+  }
+}
+.waves img:nth-child(3) {
+  bottom: 0.3vw;
+  opacity: 0.6;
+  animation: move-3 3.5s infinite;
+}
+@keyframes move-3 {
+  50% {
+    transform: translateY(20px);
+  }
+}
+.waves img:nth-child(4) {
+  bottom: 0.1vw;
+  opacity: 0.5;
+  animation: move-4 3s infinite;
+}
+@keyframes move-4 {
+  50% {
+    transform: translateY(20px);
+  }
+}

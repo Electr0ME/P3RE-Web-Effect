@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			body,
+			html {
+				padding: 0;
+				margin: 0;
+				font-family: Arial, sans-serif;
+				display: block;
+			}
+
+			.startwaves {
+				position: fixed;
+				display: flex;
+				justify-content: center;
+				height: 120vh;
+				width: 100%;
+				background-color: #469ce5;
+				transform: translateY(-10vh);
+				animation-name: down;
+				animation-duration: 3s;
+				animation-delay: 1s;
+				animation-timing-function: ease-out;
+				z-index: 999;
+			}
+
+			@keyframes down {
+				0% {
+					transform: translateY(-10vh);
+				}
+
+				100% {
+					transform: translateY(110vh);
+				}
+
+			}
+
+			.waves {
+				display: block;
+				position: absolute;
+				bottom: 120vh;
+				width: 100%;
+			}
+
+			#videobg {
+				width: 100%;
+				height: 100%;
+			}
+
+			.videos {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				position: absolute;
+			}
+
+			#centertext {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				animation-name: out;
+				animation-duration: 1.5s;
+				animation-delay: 3s;
+				animation-fill-mode: forwards; 
+			}
+
+			@keyframes out {
+				100% {
+					opacity: 0;
+					display: none;
+				}
+			}
+			@keyframes in {
+				100% {
+					opacity: 1;
+				}
+			}
+			#p3relogo{
+				position: absolute;
+				right: 12%;
+				top: 50%;
+				opacity: 0;
+				transform: translateY(-50%);
+				animation-name: in;
+				animation-duration: 1.5s;
+				animation-delay: 5s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="startwaves" id="downout">
+			<div class="waves">
+				<img src="img/waves/wave-1.svg" />
+				<img src="img/waves/wave-2.svg" />
+				<img src="img/waves/wave-3.svg" />
+				<img src="img/waves/wave-4.svg" />
+				<img src="img/waves/wave-5.svg" id="shape" />
+			</div>
+		</div>
+		<div id="videobg">
+			<video id="video2" class="videos" muted="muted" loop>
+				<source src="assset/fv_movie2.mp4">
+			</video>
+			<video id="video1" class="videos" muted="muted">
+				<source src="assset/fv_movie1.mp4">
+			</video>
+			<div id="centertext">
+				<h1>Memento Mori</h1>
+				<p>Remember, You Will Die.<br />Time never waits.<br />It delivers all equally to the same end.</p>
+			</div>
+			<img id="p3relogo" src="img/P3RE.svg" alt="" />
+		</div>
+		<script>
+			var downwave = document.getElementById('downout');
+			
+			// 添加动画结束事件监听器
+			downwave.addEventListener('animationend', function() {
+				// 在动画结束后执行你的操作，比如改变元素属性
+				downwave.style.display = 'none'
+				var video1 = document.getElementById("video1");
+				var video2 = document.getElementById("video2");
+				video1.play();
+				video1.addEventListener('ended', function() {
+					// 在视频播放结束时执行你的操作
+					// alert('视频播放结束！');
+					video1.style.display = 'none'
+					video2.play();
+				});
+			});
+		</script>
+	</body>
+</html>
